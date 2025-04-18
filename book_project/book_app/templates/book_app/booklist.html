@@ -1,0 +1,39 @@
+{% extends "book_app/base.html" %} 
+{% block title %} Your Book {% endblock title %} 
+
+{% block content %}
+
+<div class="btn-group my-3 mx-5">
+  <a href="{% url 'booklist' %}" class="btn btn-primary {% if not request.GET.genre%}active{% endif %}" aria-current="page">ALL</a>
+  <a href="?genre=Fiction" class="btn btn-primary {% if request.GET.genre == 'Fiction' %}active{% endif %}">Fiction</a>
+  <a href="?genre=Non-Fiction" class="btn btn-primary {% if request.GET.genre == 'Non-Fiction' %}active{% endif %}">Non-Fiction</a>
+  <a href="?genre=Science" class="btn btn-primary {% if request.GET.genre == 'Science' %}active{% endif %}">Science</a>
+  <a href="?genre=Technology" class="btn btn-primary {% if request.GET.genre == 'Technology' %}active{% endif %}">Technology</a>
+  <a href="?genre=History" class="btn btn-primary {% if request.GET.genre == 'History' %}active{% endif %}">History</a>
+  <a href="?genre=Adventure" class="btn btn-primary {% if request.GET.genre == 'Adventure' %}active{% endif %}">Adventure</a>
+  <a href="?genre=Horror" class="btn btn-primary {% if request.GET.genre == 'Horror' %}active{% endif %}">Horror</a>
+  <a href="?genre=Other" class="btn btn-primary {% if request.GET.genre == 'Other' %}active{% endif %}">Other</a>
+</div>
+
+<div class="d-flex flex-wrap gap-4 mx-5 my-3">
+  {% for i in book_data %}
+
+  <div class="card" style="width: 20rem">
+    <div class="card-body">
+      <h4 class="card-title">{{ i.title }}</h4>
+      <h6 class="card-subtitle mb-2 text-body-secondary">{{ i.genre }}</h6>
+      <p class="card-text">{{ i.description | truncatewords:5}}</p>
+      <p class="card-text text-danger">Author : {{i.author}}</p>
+      <a href="{% url 'updatebook' i.pk %}" class="card-link">Edit</a>
+      <a href="{% url 'deletebook' i.pk %}" class="card-link delete">Delete</a>
+      <a href="{% url 'viewbook' i.pk %}" class="card-link">View Detail</a>
+    </div>
+  </div>
+
+  {% empty %}
+  <h1>No Book Found</h1>
+
+  {% endfor %}
+</div>
+
+{% endblock content %}

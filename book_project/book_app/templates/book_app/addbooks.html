@@ -1,0 +1,15 @@
+{% extends "book_app/base.html" %}
+
+{% block title %} Add Book {% endblock title %}
+
+
+{% block content %}
+
+<div class="my-3">
+<form action="" method="post" novalidate>
+    {% csrf_token %}
+    {{ form.as_p}}
+    <input type="submit" class="btn btn-success" value="Save">
+</form>
+</div>
+{% endblock content %}

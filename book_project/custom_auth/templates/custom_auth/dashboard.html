@@ -1,0 +1,14 @@
+{% extends "book_app/base.html" %}
+{% load static %}
+{% block title %} Dash Board {% endblock title %}
+
+{% block content %}
+        <h1> User Dashbaord </h1>
+        <P>  welcome , {{request.user.email}} </P>
+
+        <div>
+                <a href="{% url "Passwordchange" %}" class="btn btn-outline-danger ms-1">
+                Change Password
+                </a>
+        </div>
+{% endblock content %}
