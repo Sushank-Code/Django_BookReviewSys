@@ -8,12 +8,6 @@ from django.contrib.auth.decorators import login_required
 def homebook(request):
     return render(request,'book_app/home.html')
    
-def aboutus(request):
-    return render(request,'book_app/about.html')
-
-def popular(request):
-    return render(request,'book_app/popularbooks.html')
-
 @login_required
 def book_list(request):
     genre = request.GET.get('genre')

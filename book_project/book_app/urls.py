@@ -4,8 +4,6 @@ from book_app import views
 
 urlpatterns = [
    path('',views.homebook,name="home"), 
-   path('about/',views.aboutus,name="about"),
-   path('popular/',views.popular,name="popular"),
    path('addbook/',views.addbooks,name="addbook"),
    path('viewbook/<int:pk>/',views.viewbooks,name="viewbook"),
    path('updatebook/<int:pk>/',views.updatebook,name="updatebook"),
